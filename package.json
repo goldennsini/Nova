@@ -1,0 +1,44 @@
+{
+  "name": "a0-project",
+  "version": "1.0.0",
+  "license": "0BSD",
+  "private": true,
+  "main": "index.ts",
+  "scripts": {
+    "start": "npx expo start",
+    "android": "npx expo run:android",
+    "ios": "npx expo run:ios",
+    "web": "npx expo start --web"
+  },
+  "dependencies": {
+    "@auth/core": "0.37.0",
+    "@auth0/auth0-react": "2.0.1",
+    "@clerk/clerk-react": "5.0.0",
+    "@convex-dev/auth": "0.0.90",
+    "@convex-dev/auth/providers/Password": "latest",
+    "@convex-dev/auth/react": "latest",
+    "@convex-dev/auth/server": "0.0.90",
+    "@expo/vector-icons": "^15.0.3",
+    "@react-navigation/bottom-tabs": "latest",
+    "@react-navigation/native": "latest",
+    "@react-navigation/native-stack": "latest",
+    "@simplewebauthn/browser": "9.0.1",
+    "@simplewebauthn/server": "9.0.2",
+    "convex": "1.31.7",
+    "convex/react": "latest",
+    "convex/server": "1.31.7",
+    "convex/values": "1.31.7",
+    "expo": "^52.0.46",
+    "nodemailer": "6.8.0",
+    "react": "18.3.1",
+    "react-dom": "19.1.0",
+    "react-native": "0.76.9",
+    "react-native-safe-area-context": "~5.6.0",
+    "react-native-web": "~0.21.0"
+  },
+  "devDependencies": {
+    "@babel/core": "^7.20.0",
+    "@types/react": "~18.2.14",
+    "typescript": "^5.1.3"
+  }
+}
