@@ -5,6 +5,16 @@ import { authTables } from "@convex-dev/auth/server";
 export default defineSchema({
 ...authTables,
 
+//user table 
+users: defineTable({
+  email: v.string(),
+  username: v.string(),
+  profileImage: v.optional(v.string()),
+  createdAt: v.number(),
+})
+.index("by_email", ["email"]),
+
+
 // User profiles
 userProfiles: defineTable({
 userId: v.id("users"),
