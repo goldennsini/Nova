@@ -21,6 +21,7 @@ import StreakScreen from "./screens/StreakScreen";
 import CommunityFeedScreen from "./screens/CommunityFeedScreen";
 import AuthorDashboardScreen from "./screens/AuthorDashboardScreen";
 import CreateStoryScreen from "./screens/CreateStoryScreen";
+import EnsureUser from "./screens/EnsureUser";
 
 const Stack = createNativeStackNavigator();
 const Tab = createBottomTabNavigator();
@@ -160,34 +161,36 @@ export default function App() {
           <AuthStack />
         </Unauthenticated>
 
-        <Authenticated>
-          <AppStackNavigator.Navigator
-            screenOptions={{
-              headerShown: false,
-            }}
-          >
-            <AppStackNavigator.Screen
-              name="AppTabs"
-              component={AppTabs}
-              options={{ animationEnabled: false }}
-            />
-            <AppStackNavigator.Screen
-              name="Wallet"
-              component={WalletScreen}
-              options={{ animationEnabled: true }}
-            />
-            <AppStackNavigator.Screen
-              name="AuthorDashboard"
-              component={AuthorDashboardScreen}
-              options={{ animationEnabled: true }}
-            />
-            <AppStackNavigator.Screen
-              name="CreateStory"
-              component={CreateStoryScreen}
-              options={{ animationEnabled: true }}
-            />
-          </AppStackNavigator.Navigator>
-        </Authenticated>
+    <Authenticated>
+  <EnsureUser>
+    <AppStackNavigator.Navigator
+      screenOptions={{
+        headerShown: false,
+      }}
+    >
+      <AppStackNavigator.Screen
+        name="AppTabs"
+        component={AppTabs}
+        options={{ animationEnabled: false }}
+      />
+      <AppStackNavigator.Screen
+        name="Wallet"
+        component={WalletScreen}
+        options={{ animationEnabled: true }}
+      />
+      <AppStackNavigator.Screen
+        name="AuthorDashboard"
+        component={AuthorDashboardScreen}
+        options={{ animationEnabled: true }}
+      />
+      <AppStackNavigator.Screen
+        name="CreateStory"
+        component={CreateStoryScreen}
+        options={{ animationEnabled: true }}
+      />
+    </AppStackNavigator.Navigator>
+  </EnsureUser>
+</Authenticated>
       </NavigationContainer>
     </SafeAreaProvider>
   );

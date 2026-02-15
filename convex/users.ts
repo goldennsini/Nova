@@ -90,3 +90,27 @@ await ctx.db.patch(userData._id, updates);
 return userData._id;
 },
 });
+
+export const createUserIfNotExists = mutation({
+  args: {},
+  returns: v.id("users"),
+  handler: async (ctx) => {
+    const user = await ctx.auth.getUserIdentity();
+    if (!user?.email) throw new Error("Not authenticated");
+
+    const existing = await ctx.db
+      .query("users")
+      .withIndex("by_email", (q) => q.eq("email", user.email!))
+      .unique();
+
+    if (existing) return existing._id;
+
+    return await ctx.db.insert("users", {
+      email: user.email!,
+      username: user.email!.split("@")[0],
+      profileImage: user.pictureUrl ?? undefined,
+      bio: "",
+      createdAt: Date.now(),
+    });
+  },
+});
